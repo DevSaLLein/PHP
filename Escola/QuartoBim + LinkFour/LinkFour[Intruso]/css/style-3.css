@@ -1,0 +1,55 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #6C7A89;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    }
+
+.box {
+    width: 850px;
+    height: 200px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    }
+
+body{
+    margin: 0px;
+}
+
+.insert{
+    border: 1px solid #6C7A89;
+    border-radius: 3px;
+    margin: 15px;
+}
+
+.txtlg{
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.radio , .link , .bt{
+    margin: 13px;
+    display: inline-block;
+}
+
+.link{
+    margin-left: 20px;
+}
+
+input[type="url"]{
+    width: 225px;
+}
+
+button{
+    border: 0;
+    padding: 7px;
+	background-color: rgb(70, 95, 117);
+	color:  white;
+	border-radius: 5px;
+	font-weight: bold;
+    width: 80px;
+    text-align: center;
+}

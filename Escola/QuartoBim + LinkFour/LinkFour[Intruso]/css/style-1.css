@@ -1,0 +1,63 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #6C7A89;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    }
+
+.box {
+    width: 300px;
+    height: 310px;
+    background: #fff;
+    border-radius: 10px;
+    }
+
+body{
+    margin: 0px;
+}
+.txtlg , .txt{
+    text-align: center;
+}
+
+.sair{
+    width: 50px;
+    text-align: center;
+    border: solid 1px;
+}
+.user, .senha{
+    text-align: center;
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    border: 0;
+	padding: 10px;
+	outline: 0;
+	background-color: rgb(70, 95, 117);
+	color:  white;
+	border-radius: 5px;
+	font-weight: bold;
+    width: 240px;
+    text-align: center;
+}
+
+.bt{
+    text-align: center;
+}
+
+input[type="text"] , input[type="password"]{
+    width: 220px;
+    height: 25px;
+}
+
+button:hover{
+    background-color: rgb(63, 55, 110);
+}
+

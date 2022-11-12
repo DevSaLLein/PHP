@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset> <legend>Formulário</legend>
+    <form action="form.php" method="GET">
+        <label for="name">Seu nome: </label>
+        <input type="text" name = "name"> <br>
+
+        <label for="age">Sua idade</label>
+        <input type="number" name ="age"> <br>
+
+        <label for="dtAtual">Data Atual</label> 
+        <input type="date" name ="dtAtual"> <br>
+        
+        <br> 
+        <label for="masc">Masculino</label>
+        <input type="radio" value="masculino" name="sex" checked id="masc">
+        <label for="fem">Feminino</label>
+        <input type="radio" value="feminino" name="sex" id="fem">
+
+        <input type="color" name="cor">
+
+
+        <input type="submit" value="Enviar">
+
+
+    </fieldset>
+    </form>
+</body>
+</html>
