@@ -33,14 +33,15 @@
             $arr = array(
                 'Gasolina' => 3.99,
                 'Etanol' => 4.99,
-                'Ônix' => 10
+                'Ônix' => 10,
+                'Leite Moça' => 100
             );
 
             echo "<select id='prod' name='prod'>";
 
             foreach($arr as $key => $value){
                 echo "
-                    <option value=".$value.">".$key."-".$value."</option>
+                    <option value=".$value.">".$key." - ".$value."</option>
                 ";
             }
 
@@ -57,7 +58,8 @@
             $arrValores = array(
                 3.99,
                 4.99,
-                10
+                10,
+                100
             );
 
             $cliente = $_POST['cliente'] ? $_POST['cliente']: 'Desconhecido';
@@ -92,13 +94,14 @@
 
             $nome_arquivo = "Cliente.txt";
 
-            $fp = fopen($nome_arquivo, 'w+');
+            $fp = fopen($nome_arquivo, 'a+');
 
                 fwrite($fp, "Id: ".$idCliente. "\n");
                 fwrite($fp, "Nome: ".$cliente. "\n");
                 fwrite($fp, "Combustível: ". $nomeProd. "\n");      
                 fwrite($fp, "Total à pagar: R$".number_format($total, '2', '.', ','). "\n");
                 fwrite($fp, "Pontuação: ".$pontuacao. "\n");
+                fwrite($fp, '------------------------------');
 
             fclose($fp);
 
@@ -106,10 +109,17 @@
                 <fieldset>
                 <legend>Dados</legend>
             ";
-            $arquivo = file($nome_arquivo);
-            foreach($arquivo as $key => $line){
-                echo $line."<br>";
-            }
+
+            echo "Id: ".$idCliente. "<br>";
+            echo"Nome: ".$cliente. "<br>";
+            echo "Combustível: ". $nomeProd. "<br>";
+            echo "Total à pagar: R$".number_format($total, '2', '.', ','). "<br>";
+            echo "Pontuação: ".$pontuacao. "<br>";
+
+            // $arquivo = file($nome_arquivo);
+            // foreach($arquivo as $key => $line){
+            //     echo $line."<br>";
+            // }
             
             echo "
                 </fieldset>

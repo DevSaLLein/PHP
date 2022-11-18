@@ -1,5 +1,12 @@
-Id: 84004
-Nome: Isaac
+
+Id: 88853
+Nome: Bolsonaro
+Combustível: Leite Moça
+Total à pagar: R$10,000.00
+Pontuação: 20000
+------------------------------Id: 14140
+Nome: Isaac INFO.2
 Combustível: Ônix
-Total à pagar: R$200.00
-Pontuação: 400
+Total à pagar: R$120.00
+Pontuação: 240
+------------------------------
