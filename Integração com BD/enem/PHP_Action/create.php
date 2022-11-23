@@ -20,7 +20,7 @@
             }
 
             $sql = "INSERT INTO alunos( nome, sobrenome, contato, idade, ativo) VALUES
-                ('$nome', '$sobrenome', '$contato', '$idade', 1)
+                ('$nome', '$sobrenome', '$contato', '$idade', 0)
             ";
 
             if($connect -> query($sql) === TRUE){
