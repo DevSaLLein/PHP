@@ -14,9 +14,7 @@
             if($_POST){
 
                 $id = $_POST['id'];
-                $sql = 
-                    "UPDATE alunos SET ativo = 0 WHERE id = {$id} 
-                ";
+                $sql = "UPDATE alunos SET ativo = 0 WHERE id = {$id} ";
 
                 if($connect -> query($sql) === TRUE){
                     
