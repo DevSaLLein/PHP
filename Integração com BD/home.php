@@ -7,7 +7,12 @@
     </head>
     <body>
         <?php
-            
+            echo "
+                <form method='POST'>
+                    <label for='name'>Seu nome:</label>
+                    <input type='text' id='name' name='name'/>
+                </form>
+            ";
         ?>
     </body>
 </html>
