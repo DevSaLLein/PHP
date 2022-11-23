@@ -14,14 +14,13 @@
             if($_POST){
 
                 $id = $_POST['id'];
-
                 $sql = 
                     "UPDATE alunos SET ativo = 0 WHERE id = {$id} 
                 ";
 
                 if($connect -> query($sql) === TRUE){
                     
-                    echo "<p> Aluno removido com sucesso!</p>";
+                    echo "<p>Aluno removido com sucesso!</p>";
                     echo "
                         <a href='../index.php'>
                             <button type='button'>
@@ -32,7 +31,6 @@
                 } else {
                     echo "Erro ao excluir o registro: ". $connect -> error;
                 }
-
                 $connect -> close();
             }
         ?>
