@@ -23,7 +23,7 @@
 
                     <table border='1'>
                         <tr>
-                            <td>
+                            <td rowspan='3'>
                                 Nome do produto
                             </td>
 
