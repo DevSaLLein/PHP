@@ -13,7 +13,9 @@
 
             while($row = $resultado_nome -> fetch_assoc()){
                 echo "
-                    <h3>Olá! ".$row['nome_cliente'].", sua compra foi feita com sucesso!<br>
+                    <h3>
+                        Olá! ".$row['nome_cliente'].", sua compra foi feita com sucesso!<br>
+                    </h3>
                 ";
 
                 echo "
@@ -23,7 +25,7 @@
 
                     <table border='1'>
                         <tr>
-                            <td rowspan='3'>
+                            <td>
                                 Nome do produto
                             </td>
 
@@ -40,20 +42,23 @@
             for($i = 0 ; $i < count($produtos_array) ; $i++){
                 $selecionar_produtos[$i] = "SELECT nome_produto, preco FROM produtos WHERE produto_id = '$produtos_array[$i]'";
             }
+
+
             for($i = 0 ; $i < count($selecionar_produtos) ; $i ++){
                 $resultado_produtos = $connect -> query($selecionar_produtos[$i]);
+
                 if($resultado_produtos -> num_rows > 0 ) {
                     while($row = $resultado_produtos -> fetch_assoc()){
                         echo "
-                        <tr>
-                                <td>
-                                    ".$row['nome_produto']."
-                                </td>
+                            <tr>
+                                    <td>
+                                        ".$row['nome_produto']."
+                                    </td>
 
-                                <td>
-                                    R$ ".$row['preco']."
-                                </td>
-                        </tr>                        
+                                    <td>
+                                        R$ ".$row['preco']."
+                                    </td>
+                            </tr>                        
                         ";
 
                         
@@ -64,12 +69,13 @@
                 }
                 
             }
+
             for($i = 0 ; $i < count($produtos_array) ; $i++){
                 $NovaCompra = "INSERT INTO compra values('', '$data_cadastro', '$cliente', '$produtos_array[$i]')";
                 $connect -> query($NovaCompra);
 
                 $atualizar_estoque = "UPDATE produtos set estoque = estoque - 1 WHERE produto_id= '$produtos_array[$i]'";
-                $result = $connect -> query($atualizar_estoque);       
+                $connect -> query($atualizar_estoque);       
             }
         } else {
             echo "
