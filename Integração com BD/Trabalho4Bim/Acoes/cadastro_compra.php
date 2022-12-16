@@ -3,6 +3,7 @@
 <?php
 
     require_once 'connect.php';
+    echo "<center>";
     if($_POST){
         if($dataAtual= date('Y/m/d') < $data_cadastro= $_POST['data_cadastro']){
             if($_POST['produtos']){
@@ -113,5 +114,6 @@
            </button>
        </a>
    ";
+   echo "</center>";
 
 ?>

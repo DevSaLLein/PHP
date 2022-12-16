@@ -35,20 +35,13 @@
                'SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra 
                 FROM cliente as cliente, produtos as produto, compra as compra 
                 WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id 
-                GROUP BY cliente.nome_cliente 
-                HAVING COUNT(compra.id_cliente) >= 1     
+                GROUP BY compra.data_compra DESC
+                HAVING COUNT(produto.produto_id) >= 1   
             ';
-
-            $compras = 
-               'SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra
-                FROM cliente as cliente, produtos as produto, compra as compra
-                WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id
-            ';
-            
+             
             $resultado_agrupamento = $connect -> query($Agrupamento);
-            $resultado_compras = $connect -> query($compras);
 
-            if( $resultado_compras -> num_rows > 0 ){
+            if( $resultado_agrupamento -> num_rows > 0 ){
                 echo "
                     <table border='1' align='center'>
                         <thead align='center' style='background:white; color:black;'>
@@ -116,6 +109,12 @@
                     </a>
                 ";
 
+                echo "
+                <a href='compra.php'>
+                    <button>  Veja todas as suas compras </button>
+                </a>
+                ";
+
                 
                 echo "
                     <h2>
@@ -158,22 +157,6 @@
                             </td>
                         </tr>
                     </table>
-                ";
-
-                echo "
-                    <a href='cadastro_cliente.php'>
-                        <button> 
-                            Cadastrar um novo cliente 
-                        </button>
-                    </a>
-                ";
-        
-                echo "
-                    <a href='cadastro_compra.php'>
-                        <button> 
-                            Cadastrar uma nova compra 
-                        </button>
-                    </a>
                 ";
             }
             
