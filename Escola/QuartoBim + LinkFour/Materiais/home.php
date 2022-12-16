@@ -28,18 +28,33 @@
         }
 
         echo "
+            <select name='teste'>
+        ";
+
+        for($i = 0 ; $i < 11 ; $i++){
+            echo "
+                <option value=".$i.">".$i."</option>
+            ";
+        }
+
+        echo "
+            </select>
+        ";
+
+        echo "
             <input type='submit' value='Enviar' id='button'>
             </form> <br> <br>
         "; 
     ?>
 
     <?php
+        $teste = $_POST['teste'];
         $arr = $_POST['material'];
         
         $array = explode('/', $arr);
         echo $array[0];
         echo " e o valor é R$: ". number_format($array[1], 2, '.', ',');
-
+        echo "<br> $teste";
     ?>
 </body>
 </html>

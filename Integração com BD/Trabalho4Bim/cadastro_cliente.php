@@ -10,25 +10,37 @@
     <?php
         require_once 'Acoes/connect.php';
         echo "
-            <center>
-                <h2>Cadastro</h2>
-                <form method='POST' action='Acoes/cadastro_cliente.php'>
-                    <label for='nome'>Seu nome: </label>
-                    <input type='text' placeholder='Digite seu nome' id='nome' name='nome'/>
+            <fieldset>
+                <center>
+                    <h2>
+                        Cadastro
+                    </h2>
+                    
+                    <form method='POST' action='Acoes/cadastro_cliente.php'>
+                        <label for='nome'>Seu nome: </label>
+                        <input type='text' placeholder='Digite seu nome' id='nome' name='nome'/>
 
-                    <br>
+                        <br>
 
-                    <label for='sobrenome'>Seu sobrenome: </label>
-                    <input type='text' placeholder='Digite seu sobrenome' id='sobrenome' name='sobrenome'/>
+                        <label for='sobrenome'>Seu sobrenome: </label>
+                        <input type='text' placeholder='Digite seu sobrenome' id='sobrenome' name='sobrenome'/>
 
-                    <br>
+                        <br>
 
-                    <label for='end'>Seu endereço: </label>
-                    <input type='text' placeholder='Digite seu endereço' id='end' name='end'/>
-                
-                    <input type='submit' value='Cadastrar'/>
-                </form>
-            </center>
+                        <label for='end'>Seu endereço: </label>
+                        <input type='text' placeholder='Digite seu endereço' id='end' name='end'/>
+                    
+                        <br>
+                        <br>
+                        <input type='submit' value='Cadastrar'/>
+                    </form>
+                        <a href='index.php'>
+                            <button>
+                                Home
+                            </button>
+                        </a>
+                </center>
+            </fielset>
         ";
     ?>
 </body>

@@ -12,17 +12,23 @@
 
         if($connect -> query($sql) === TRUE){
             echo "
-                <h3>
-                    Novo cliente cadastrado com sucesso!
-                </h3>
+                <fieldset>
+                    <center>
+                        <h2>
+                            Novo cliente cadastrado com sucesso!
+                        </h2>
+                        
+                        <img src='../Estilo/cadastro_cliente.png' width='250px' height='250px'/>
 
-                <a href='../index.php'>
-                    <button>Home</button>
-                </a>
+                        <a href='../index.php'>
+                            <button>Home</button>
+                        </a>
 
-                <a href='../cadastro_cliente.php'>
-                    <button>Voltar</button>
-                </a>
+                        <a href='../cadastro_cliente.php'>
+                            <button>Voltar</button>
+                        </a>
+                    </center>
+                </fieldset>
             ";
         }
     }

@@ -6,29 +6,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cadastro compra</title>
     </head>
-    <body>
+    <body style='background-image:url(Estilo/cadastro_compra.png)'>
         <?php
+
             require_once 'Acoes/connect.php';
             echo "
-                <fieldset>
-                    <legend align='center'> Produtos disponíveis </legend>
-                    <form method='POST' action='Acoes/cadastro_compra.php'>
-                        <table border='1' align='center'>
-                            <thead align ='center' style='color:black; background:white'>
-                                <tr>
-                                    <th>
-                                        Nome 
-                                    </th>
+                <fieldset style='background:#121213; opacity:50%'>
+                    <div>
+                        <h2 align='center'>
+                            Produtos disponíveis
+                        </h2>
+                        <hr>
+                    </div>
+                        <form method='POST' action='Acoes/cadastro_compra.php'>
+                            <table border='1' align='center'>
+                                <thead align ='center' style='color:black; background:white'>
+                                    <tr>
+                                        <th>
+                                            Nome 
+                                        </th>
 
-                                    <th>
-                                        Preço
-                                    </th>
+                                        <th>
+                                            Preço
+                                        </th>
 
-                                    <th>
-                                        Estoque
-                                    </th>
-                                </tr>
-                            </thead>
+                                        <th>
+                                            Estoque
+                                        </th>
+                                    </tr>
+                                </thead>
             ";
 
             $sql_clientes = "SELECT id_cliente, nome_cliente, sobrenome FROM cliente";
@@ -36,7 +42,11 @@
 
             echo "
                 <div align='center'>
-                Cliente: <select name='cliente'>
+                    <label for='cliente'> 
+                        Cliente: 
+                    </label>
+                    
+                    <select name='cliente' id='cliente'>
                 </div> 
             ";
 
@@ -56,7 +66,11 @@
 
             echo "
                 <br>
-                <label for='data'>Data atual:</label>
+
+                <label for='data'> 
+                    Data atual: 
+                </label>
+
                 <input type='date' id='data' name='data_cadastro'/>
             ";
 
@@ -68,38 +82,44 @@
                         <tr>
                             <td>
                                 <input type='checkbox' name='produtos[]' value=".$row['produto_id']."/>
-                                <center>".$row['nome_produto']."</center>
+                                <center>" .$row['nome_produto']. "</center>
                             </td>
 
                             <td>
-                                <center>R$ ".$row['preco']."</center>
+                                <center>R$ ".$row['preco']. "</center>
                             </td>
 
                             <td>
-                                <center>".$row['estoque']." </center>
+                                <center>" .$row['estoque']." </center>
                             </td>
                         </tr>
+                        
                     ";
                 }
-            } 
-            echo "</tbody>";
-            echo "
-                    </table>
-                    <input type='submit' value='Cadastrar compra'/>
-                    </form>
-                    <a href='index.php'>
-                        <button>
-                            Voltar
-                        </button>
-                    </a>
 
+
+                echo "</tbody>";
+                echo "
+                    </table>
                     <center>
+                        <input type='submit' value='Cadastrar compra'/>
+                        </form>
+                        
+                        <a href='index.php'>
+                            <button>
+                                Voltar
+                            </button>
+                        </a>
+                        
+                        <br>
+                        
                         <a href = cadastro_cliente.php>
                             Não é cliente? clique aqui!
                         </a>
                     </center>
-                </fieldset>
-            ";
+                    </fieldset>
+                ";
+            } 
         ?>
     </body>
 </html>
