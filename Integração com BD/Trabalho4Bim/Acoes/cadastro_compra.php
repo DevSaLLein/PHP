@@ -5,8 +5,8 @@
     require_once 'connect.php';
     echo "<center>";
     if($_POST){
-        if($dataAtual= date('Y/m/d') < $data_cadastro= $_POST['data_cadastro']){
-            if($_POST['produtos']){
+        if(date('Y-m-d') <= $data_cadastro = date($_POST['data_cadastro'])){
+            if(@$_POST['produtos']){
 
                 $cliente = $_POST['cliente'];
                 $produtos_array = $_POST['produtos'];
@@ -79,13 +79,15 @@
                 
             } else {
                 echo "
-                    <h2>Ops! você não adicionou nenhum produto! </h2>
+                    <fieldset>
+                        <h2>Ops! você não adicionou nenhum produto! </h2>
 
-                    <a href = '../cadastro_compra.php'>
-                        <button>
-                            Voltar
-                        </button>
-                    </a>
+                        <a href = '../cadastro_compra.php'>
+                            <button>
+                                Voltar
+                            </button>
+                        </a>
+                    </fieldset>
                 ";
             }
         } else {
@@ -108,6 +110,7 @@
     }
 
     echo "
+        <br >
        <a href='../index.php'>
            <button> 
                Home 
@@ -116,4 +119,5 @@
    ";
    echo "</center>";
 
+   $connect -> close();
 ?>

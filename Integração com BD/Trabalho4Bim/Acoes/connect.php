@@ -17,8 +17,6 @@
 
     if($connect -> connect_error){
         echo "deu error:". $connect -> connect_error;
-    } else {
-        echo "  conexão realizada com sucesso";
-    }
+    } 
 
 ?>

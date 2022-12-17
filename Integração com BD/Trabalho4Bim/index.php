@@ -35,8 +35,8 @@
                'SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra 
                 FROM cliente as cliente, produtos as produto, compra as compra 
                 WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id 
-                GROUP BY compra.data_compra DESC
-                HAVING COUNT(produto.produto_id) >= 1   
+                GROUP BY compra.compra_id DESC
+                HAVING COUNT(compra.compra_id) >= 1   
             ';
              
             $resultado_agrupamento = $connect -> query($Agrupamento);

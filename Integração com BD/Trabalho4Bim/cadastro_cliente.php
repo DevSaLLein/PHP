@@ -29,6 +29,11 @@
 
                         <label for='end'>Seu endereço: </label>
                         <input type='text' placeholder='Digite seu endereço' id='end' name='end'/>
+
+                        <br>
+
+                        <label for='cpf'>Seu CPF: </label>
+                        <input type='text' placeholder='Digite seu CPF' id='cpf' name='cpf'/>
                     
                         <br>
                         <br>

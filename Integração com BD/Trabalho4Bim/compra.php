@@ -23,7 +23,7 @@
 
         <?php
 
-            @$CPF = $_POST['cpf'];        
+            @$CPF = ($_POST['cpf']);        
 
             $nome = 
                "SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra
@@ -36,7 +36,7 @@
                "SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra
                 FROM cliente as cliente, produtos as produto, compra as compra
                 WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id AND cliente.CPF='$CPF'
-                ORDER BY compra.data_compra ASC
+                ORDER BY compra.compra_id DESC
             ";
 
             $resultado_nome = $connect -> query($nome);
@@ -102,14 +102,19 @@
                         </table>
                     ";
                 } elseif($resultado_compras -> num_rows <= 0 ){
-                    while($row = $resultado_nome -> fetch_assoc()){}
+
+                    $nome = "SELECT nome_cliente, sobrenome from cliente where cpf='$CPF'";
+                    $resultado_nome = $connect -> query($nome);
+
+                    while($row = $resultado_nome -> fetch_assoc()){
                         echo "
                             <h2>
-                                Olá! Vejo que você ainda não fez nenhuma compra
+                                Olá! ".$row['nome_cliente']." ".$row['sobrenome'].", vejo que você ainda não fez nenhuma compra
                                 <br> 
                                 Para fazer uma nova compra, <a href='cadastro_compra.php'> clique aqui </a>
                             </h2>
                         ";
+                        
                         echo "
                             <table border='1'>
                                 <tr>
@@ -121,15 +126,14 @@
                                 </tr>
                             </table>
                         ";
-    
-                    
-                }
+                    }
 
             } else {
+
                 echo "
                     <fieldset>
                         <h2>
-                            Olá, nos desculpe, não  o encontramos como nosso cliente atual 
+                            Olá, ".$row['nome_cliente']." ".$row['sobrenome']."nos desculpe, não  o encontramos como nosso cliente atual 
                             <br> 
                             veja se não ocorreu nenhum erro na digitação de seu CPF 
                             <br>
@@ -137,6 +141,7 @@
                         </h2>
                     </fieldset>
                 ";
+                }
 
             }
             echo "

@@ -7,8 +7,9 @@
         $nome = $_POST['nome'];
         $sobrenome = $_POST['sobrenome'];
         $end = $_POST['end'];
+        $cpf = $_POST['cpf'];
 
-        $sql = "INSERT INTO cliente VALUES('', '$nome', '$sobrenome', '$end')";
+        $sql = "INSERT INTO cliente VALUES('', '$nome', '$sobrenome', '$end', '$cpf')";
 
         if($connect -> query($sql) === TRUE){
             echo "
@@ -31,5 +32,6 @@
                 </fieldset>
             ";
         }
+        $connect -> close();
     }
 ?>
