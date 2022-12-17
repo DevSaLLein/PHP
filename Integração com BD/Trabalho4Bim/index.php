@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php
-
+            // Trás os dados do arquivo connect.php sem ter que digitar tudo de novo;   
             require_once 'Acoes/connect.php';
 
             echo "
@@ -31,6 +31,7 @@
                     </legend>
             ";
 
+            //Vai agrupar todos os produtos comprados por seus respectivos compradores;  
             $Agrupamento = 
                'SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra 
                 FROM cliente as cliente, produtos as produto, compra as compra 
@@ -38,9 +39,14 @@
                 GROUP BY compra.compra_id DESC
                 HAVING COUNT(compra.compra_id) >= 1   
             ';
-             
+
+
+            //Vai fazer uma conexão com o Banco de dados dando o comando sql escrito na variável $agrupamento, após isso, o seu resultado
+            //será aguardado na variável $resultado_agrupamento;
+            //query() => Ler um comando SQL;
             $resultado_agrupamento = $connect -> query($Agrupamento);
 
+            //Caso o resultado da pesquisa anterior der mais de ZERO linhas, será executado o que está dentro do IF;
             if( $resultado_agrupamento -> num_rows > 0 ){
                 echo "
                     <table border='1' align='center'>
@@ -65,7 +71,10 @@
                         </thead>
                         <tbody align='center'>
                 ";
+                    //A var $row vai receber um agrupamento feito através de um array associativo em que cada coluna do banco de dado é uma parte do ARRAY;  
                     while($row = $resultado_agrupamento -> fetch_assoc()){
+
+                        //Data pegue do Banco de Dados e armazenada dentro do objeto $data;
                         $data = new DateTime($row['data_compra']);
 
                         echo "                    
@@ -124,9 +133,13 @@
 
                 echo "<table border='1' align='center'>";
 
+                // Vai pegar uma relação com todos os clientes presentes na aplicação;
                 $clientes_atuais = 'SELECT nome_cliente, sobrenome FROM cliente';
+
+                // A var $resultado_clientes vai receber o resultado feito através da conexão do BD com o comando mysql;
                 $resultado_clientes = $connect -> query($clientes_atuais);
 
+                //Caso o resultado feito do comando SQL der mais de ZERO linhas, será executado o que estiver dentre o IF
                 if($resultado_clientes -> num_rows > 0) {
                     while($row = $resultado_clientes -> fetch_assoc()){
                         echo "

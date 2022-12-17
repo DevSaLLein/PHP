@@ -8,7 +8,9 @@
 </head>
 <body class='body'>
     <?php
+        //Trás os dados do arquivo connect.php sem ter que digitar tudo de novo;
         require_once 'Acoes/connect.php';
+        
         echo "
             <fieldset>
                 <center>

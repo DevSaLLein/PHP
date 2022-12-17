@@ -7,6 +7,7 @@
     </head>
     <body>
         <?php
+            //Trás os dados do arquivo connect.php sem ter que digitar tudo de novo;
             require_once 'Acoes/connect.php';
 
             echo "<center>";
@@ -22,29 +23,35 @@
         ?>
 
         <?php
-
+            //@ => Ignorar erros;
+            //a var $CPF vai receber o que está no input chamado cpf dado ao form anterior;
             @$CPF = ($_POST['cpf']);        
 
+            //comando SQL que vai pegar os dados do cliente que possui o CPF que vai ser indicado mais pra frente;
             $nome = 
-               "SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra
+               "SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome
                 FROM cliente as cliente, produtos as produto, compra as compra
                 WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id AND cliente.CPF='$CPF'
                 GROUP BY cliente.id_cliente
             ";
-
+            
+            //Trás uma relação completa de todos os produtos comprados pelo cliente indicado pelo CPF; 
             $compras = 
-               "SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra
+               "SELECT produto.nome_produto, produto.preco, compra.data_compra
                 FROM cliente as cliente, produtos as produto, compra as compra
                 WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id AND cliente.CPF='$CPF'
                 ORDER BY compra.compra_id DESC
             ";
 
+            //Resultados dos comandos SQL escritos logo acima;
             $resultado_nome = $connect -> query($nome);
             $resultado_compras = $connect -> query($compras);
 
-
+            //Caso o CPF exista(TRUE) fará o que está no IF I
             if($CPF){
+                //Caso o resultado de linhas do comando SQL das compras der mais de ZERO, fará o que está no IF II
                 if($resultado_compras -> num_rows > 0 ){
+                    //A var $row vai receber um agrupamento feito através de um array associativo em que cada coluna do banco de dado é uma parte do ARRAY; 
                     while($row = $resultado_nome -> fetch_assoc()){
                         echo "
                             <h2>
@@ -79,7 +86,10 @@
                         <tbody align='center'>
                     ";
 
+                    //A var $row vai receber um agrupamento feito através de um array associativo em que cada coluna do banco de dado é uma parte do ARRAY; 
                     while($row = $resultado_compras -> fetch_assoc()){
+
+                        //Data pegue do Banco de Dados e armazenada dentro do objeto $data;
                         $data = new DateTime($row['data_compra']);
                         echo "
                             <tr>
@@ -101,11 +111,14 @@
                             <tbody>
                         </table>
                     ";
+                    
+                //SEGUNDA CONDIÇÂO, caso o resultado de linhas for menor que 1(ZERO), fará o que está dentro do ELSEIF;
                 } elseif($resultado_compras -> num_rows <= 0 ){
 
                     $nome = "SELECT nome_cliente, sobrenome from cliente where cpf='$CPF'";
                     $resultado_nome = $connect -> query($nome);
 
+                    //A var $row vai receber um agrupamento feito através de um array associativo em que cada coluna do banco de dado é uma parte do ARRAY; 
                     while($row = $resultado_nome -> fetch_assoc()){
                         echo "
                             <h2>
@@ -127,13 +140,13 @@
                             </table>
                         ";
                     }
-
+            //Caso o CPF nao existir(FALSE), será executado o que está no else abaixo;
             } else {
 
                 echo "
                     <fieldset>
                         <h2>
-                            Olá, ".$row['nome_cliente']." ".$row['sobrenome']."nos desculpe, não  o encontramos como nosso cliente atual 
+                            Olá, nos desculpe, não  o encontramos como nosso cliente atual 
                             <br> 
                             veja se não ocorreu nenhum erro na digitação de seu CPF 
                             <br>
