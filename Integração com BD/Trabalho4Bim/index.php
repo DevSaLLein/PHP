@@ -27,17 +27,18 @@
             echo "
                 <fieldset>
                     <legend align='center'>
-                        Últimas Compras realizadas!
+                        Atuais clientes e o total de compras de cada um
                     </legend>
             ";
 
             //Vai agrupar todos os produtos comprados por seus respectivos compradores;  
             $Agrupamento = 
-               'SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra 
+               'SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome, produto.nome_produto, produto.preco, compra.data_compra,
+                COUNT(compra.compra_id) AS total
                 FROM cliente as cliente, produtos as produto, compra as compra 
-                WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id 
-                GROUP BY compra.compra_id DESC
-                HAVING COUNT(compra.compra_id) >= 1   
+                WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id
+                GROUP BY(cliente.id_cliente)
+   
             ';
 
 
@@ -56,16 +57,8 @@
                                     Cliente
                                 </th>
             
-                                <th rowspan='10'>
-                                    Produto Comprado
-                                </th>
-            
                                 <th>
-                                    Preço
-                                </th>
-            
-                                <th>
-                                    Data da Compra
+                                   Quantidade de produtos comprados
                                 </th>
                             </tr>
                         </thead>
@@ -84,16 +77,9 @@
                                 </td>
 
                                 <td> 
-                                    ".$row['nome_produto']."
+                                    ".$row['total']."
                                 </td>
                                 
-                                <td>
-                                    R$ ".$row['preco']."
-                                </td>
-
-                                <td>
-                                    ".$data -> format('d/m/Y')."
-                                </td>
                             </tr>
                         ";
                     }

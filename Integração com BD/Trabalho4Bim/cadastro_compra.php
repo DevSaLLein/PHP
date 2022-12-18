@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro compra</title>
+        <title>Cadastrar compra</title>
     </head>
     <body style='background-image:url(Estilo/cadastro_compra.png)'>
         <?php
@@ -22,6 +22,7 @@
                             <table border='1' align='center'>
                                 <thead align ='center' style='color:black; background:white'>
                                     <tr>
+
                                         <th>
                                             Nome 
                                         </th>
@@ -91,6 +92,7 @@
                     echo "
                         <tr>
                             <td>
+                
                                 <input type='checkbox' name='produtos[]' value=".$row['produto_id']."/>
                                 <center>" .$row['nome_produto']. "</center>
                             </td>
@@ -103,7 +105,6 @@
                                 <center>" .$row['estoque']." </center>
                             </td>
                         </tr>
-                        
                     ";
                 }
 
