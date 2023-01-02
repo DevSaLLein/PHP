@@ -28,12 +28,8 @@
             @$CPF = $_POST['cpf'];        
 
             //comando SQL que vai pegar os dados do cliente que possui o CPF que vai ser indicado mais pra frente;
-            $nome = 
-               "SELECT cliente.id_cliente, cliente.nome_cliente, cliente.sobrenome
-                FROM cliente as cliente, produtos as produto, compra as compra
-                WHERE compra.id_cliente = cliente.id_cliente AND compra.produto_id = produto.produto_id AND cliente.CPF='$CPF'
-                GROUP BY cliente.id_cliente
-            ";
+            $nome = "SELECT nome_cliente, sobrenome from cliente where cpf='$CPF'";
+            $resultado_nome = $connect -> query($nome);
             
             //Trás uma relação completa de todos os produtos comprados pelo cliente indicado pelo CPF; 
             $compras = 
@@ -122,8 +118,7 @@
                 //SEGUNDA CONDIÇÂO, caso o resultado de linhas for menor que 1(ZERO), fará o que está dentro do ELSEIF;
                 } elseif($resultado_compras -> num_rows <= 0 ){
 
-                    $nome = "SELECT nome_cliente, sobrenome from cliente where cpf='$CPF'";
-                    $resultado_nome = $connect -> query($nome);
+                    
 
                     //A var $row vai receber um agrupamento feito através de um array associativo em que cada coluna do banco de dado é uma parte do ARRAY; 
                     while($row = $resultado_nome -> fetch_assoc()){
@@ -152,7 +147,7 @@
 
             } elseif($resultado_nome -> num_rows <= 0) {
 
-                echo "
+                echo "S
                     <fieldset>
                         <h2>
                             Olá, nos desculpe, não  o encontramos como nosso cliente atual 

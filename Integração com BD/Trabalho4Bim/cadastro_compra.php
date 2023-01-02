@@ -48,7 +48,7 @@
                     <label for='cliente'> 
                         Cliente: 
                     </label>
-                    
+    
                     <select name='cliente' id='cliente'>
                 </div> 
             ";
@@ -107,30 +107,31 @@
                         </tr>
                     ";
                 }
+            } 
 
-
-                echo "</tbody>";
-                echo "
-                    </table>
+            echo "</tbody>";
+            echo "
+                </table>
                     <center>
                         <input type='submit' value='Cadastrar compra'/>
-                        </form>
-                        
-                        <a href='index.php'>
-                            <button>
-                                Voltar
-                            </button>
-                        </a>
-                        
-                        <br>
-                        
-                        <a href = cadastro_cliente.php>
-                            Não é cliente? clique aqui!
-                        </a>
                     </center>
-                    </fieldset>
-                ";
-            } 
+                </form>
+                <center>
+                        
+                    <a href='index.php'>
+                        <button>
+                            Voltar
+                        </button>
+                    </a>
+                        
+                    <br>
+                        
+                    <a href = cadastro_cliente.php>
+                        Não é cliente? clique aqui!
+                    </a>
+                </center>
+                </fieldset>
+            ";
         ?>
     </body>
 </html>
