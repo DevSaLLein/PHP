@@ -27,7 +27,7 @@
             echo "
                 <fieldset>
                     <legend align='center'>
-                        Atuais clientes e o total de compras de cada um
+                       Clientes com igual ou mais de uma compra!
                     </legend>
             ";
 
@@ -156,7 +156,23 @@
                             </td>
                         </tr>
                     </table>
+
+                    <br>
+
+                    <a href='cadastro_cliente.php'>
+                        <button>Seja um cliente!</button>
+                    </a>
                 ";
+
+                echo "
+                    <a href='cadastro_compra.php'>
+                        <button> 
+                            Faça uma nova compra! 
+                        </button>
+                    </a>
+                ";
+
+                
             }
             
         ?>

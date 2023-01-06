@@ -147,7 +147,7 @@
 
             } elseif($resultado_nome -> num_rows <= 0) {
 
-                echo "S
+                echo "
                     <fieldset>
                         <h2>
                             Olá, nos desculpe, não  o encontramos como nosso cliente atual 
